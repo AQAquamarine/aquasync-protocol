@@ -1,8 +1,6 @@
-###aquasync-protocol
+![Aquasync](https://dl.dropboxusercontent.com/u/7817937/_github/aquamarine/aquasync_logo.png)
 
-Aquasync protocol drafts / documentations.
-
-Protocol Specification
+Aquasync Protocol Specification
 ===
 
 Columns
