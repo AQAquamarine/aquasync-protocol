@@ -62,3 +62,8 @@ References
 --
 
 [Evernote Synchronization via EDAM](https://dev.evernote.com/media/pdf/edam-sync.pdf)
+
+Related links
+---
+
+- [Aquasync](https://github.com/AQAquamarine/Aquasync) - Official implementation for iOS
