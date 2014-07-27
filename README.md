@@ -59,6 +59,25 @@ To pull/push deltas from/to the backend, following data structure are used. Alth
 }
 ```
 
+Backend Endpoint
+---
+
+The backend should respond to `POST /deltas` for push and `GET /deltas/from::ust` for pull.
+
+### POST /deltas
+
+Should receive `DeltaPack` data and return the status in HTTP Code. (like `200 for Success`)
+
+### GET /deltas/from::ust
+
+example: `GET /deltas/from:123456789`
+
+Should return `DeltaPack` data with appropriate `Content-Type`. (like `application/json`)
+
+####Concerns
+
+- Too big `DeltaPack`?
+
 Synchronization Sequence
 ---
 
@@ -71,7 +90,7 @@ Synchronization Sequence
 2. For each retrieved resources, find local resource which has same `gid`.
      1. If not exists, create a resource.
      2. If exists, update the record if `isDirty` is not `true`. If `true`, go to `#resolveConflice`.
-     3. **DO NOT UPDATE `isDirty` and `localTimestamp` while `#pullSync`.**
+     3. **DO NOT UPDATE `isDirty` AND `localTimestamp` WHILE `#pullSync`. IT WILL OCCUR DATA DUPLICATION.**
 3. Set newest `UST` which is found in retrieved resource to `latestUST`.
 
 ### \#pushSync
