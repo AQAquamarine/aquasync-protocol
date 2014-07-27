@@ -38,8 +38,11 @@ Data Structure
 
 To pull/push deltas from/to the backend, following data structure are used. Although example data is expressed as JSON, Aquasync does not depend on JSON. It is data expression agnostic. Data can be expressed as JSON/MessagePack/plist.
 
+Every DeltaPack should have `id` to prevent duplicated maniplation and these `id` should be stored in every devices / backend datastore.
+
 ```json
 {
+  "id": "0f72fa94-d0e3-497c-8528-af25df5ff7c9" // UUID
   "model1_name": [
     {
       "column_1": "data_1",
@@ -77,6 +80,7 @@ Should return `DeltaPack` data with appropriate `Content-Type`. (like `applicati
 ####Concerns
 
 - Too big `DeltaPack`? Separete them into several DeltaPacks?
+- How about pushing one delta? How can I send an object efficiently?
 
 Synchronization Sequence
 ---
