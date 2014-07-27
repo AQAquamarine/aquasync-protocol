@@ -76,7 +76,7 @@ Should return `DeltaPack` data with appropriate `Content-Type`. (like `applicati
 
 ####Concerns
 
-- Too big `DeltaPack`?
+- Too big `DeltaPack`? Separete them into several DeltaPacks?
 
 Synchronization Sequence
 ---
@@ -103,7 +103,16 @@ Synchronization Sequence
 
 #### \#resolveConflict
 
-1. If `A.localTimestamp` is newer than `B.localTimestamp`, update the record.
+1. See `localTimestamp`. Newer one should be saved.
+ 
+Timing
+---
+
+`#sync` should occur when..
+
+1. When any object is modified in local.
+2. When any object is modified in any device and get merged on master.
+3. When the device get network connection.
 
 References
 --
