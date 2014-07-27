@@ -10,7 +10,7 @@ Additional columns added to objects to handle synchronization.
 
 |column name   |type     |const?  |presence |origin |description|
 |--------------|---------|--------|---------|-------|-----------|
-|gid           |GUID     |constant|global   |local  |generated locally when object created|
+|gid           |UUIDv1   |constant|global   |local  |generated locally when object created|
 |UST           |Timestamp|variable|remote   |remote |time when the data get merged to the master|
 |deviceToken   |GUID     |constant|global   |local  |notate which device is the origin of the data|
 |isDirty       |boolean  |variable|local    |local  |true when modified/created (do not set while synchronization)|
