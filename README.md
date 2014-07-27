@@ -31,6 +31,34 @@ For convinience, call them like `device.latestUST` in this specification.
 - master: Master database (backend)
 - UST: Update Sequence Timestamp
 
+Data Structure
+---
+
+###DeltaPack
+
+To pull/push deltas from/to the backend, following data structure are used. Although example data is expressed as JSON, Aquasync does not depend on JSON. It is data expression agnostic. Data can be expressed as JSON/MessagePack/plist.
+
+```json
+{
+  "model1_name": [
+    {
+      "column_1": "data_1",
+      "column_2": "data_2"
+    },
+    {..},
+    ..
+  ],
+  "model2_name": [
+    {
+      "column_1": "data_1"
+    },
+    {..},
+    ..
+  ],
+  ..
+}
+```
+
 Synchronization Sequence
 ---
 
