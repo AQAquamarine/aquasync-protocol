@@ -42,7 +42,7 @@ Every DeltaPack should have `id` to prevent duplicated maniplation and these `id
 
 ```json
 {
-  "id": "0f72fa94-d0e3-497c-8528-af25df5ff7c9" // UUID
+  "_id": "0f72fa94-d0e3-497c-8528-af25df5ff7c9" // UUID
   "model1_name": [
     {
       "column_1": "data_1",
