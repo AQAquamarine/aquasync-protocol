@@ -90,7 +90,7 @@ Synchronization Sequence
 
 ### \#pullSync
 
-1. Retrieve all resources whose `UST` is newer than `device.latestUST` and `deviceToken` defers from `device.deviceToken`.
+1. Retrieve all resources whose `UST` is newer than (not allow equal) `device.latestUST` and `deviceToken` defers from `device.deviceToken`. (`GET /deltas/from:(latestUST)`)
 2. For each retrieved resources, find local resource which has same `gid`.
      1. If not exists, create a resource.
      2. If exists, update the record if `isDirty` is not `true`. If `true`, go to `#resolveConflice`.
@@ -99,16 +99,21 @@ Synchronization Sequence
 
 ### \#pushSync
 
-1. Find all local resources whose `dirty` is `true`.
-2. Pack them into one request and send it to the backend.
+1. Find all local records whose `dirty` is `true`.
+2. Pack them into `DeltaPack` and send it to the backend (`POST /deltas`).
 3. (Backend) Update/Create requested resources.
      1. Perform update when `localTimestamp` is newer than current `localTimestamp`.
      2. Set `UST` current timestamp.
+4. If the operation succeed, go to `#undirty`.
 
 #### \#resolveConflict
 
 1. See `localTimestamp`. Newer one should be saved.
  
+#### \#undirty
+
+1. For all records which included in `DeltaPack`, set their `dirty` to `false`. But if `localTimestamp` defers, do not undirty it. (This is when the record is modified while `#pushSync`.)
+
 Timing
 ---
 
