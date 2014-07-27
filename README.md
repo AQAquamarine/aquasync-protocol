@@ -36,7 +36,7 @@ Data Structure
 
 ###DeltaPack
 
-To pull/push deltas from/to the backend, following data structure are used. Although example data is expressed as JSON, Aquasync does not depend on JSON. It is data expression agnostic. Data can be expressed as JSON/MessagePack/plist.
+To pull/push deltas from/to the backend, following data structure are used. Although example data is represent as JSON, Aquasync does not depend on JSON. Data can be given by JSON, MessagePack or plist.
 
 Every DeltaPack should have `id` to prevent duplicated maniplation and these `id` should be stored in every devices / backend datastore.
 
