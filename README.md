@@ -13,9 +13,9 @@ Additional columns added to objects to handle synchronization.
 |gid           |UUIDv1   |constant|global   |local  |generated locally when object created|
 |UST           |Timestamp|variable|remote   |remote |time when the data get merged to the master|
 |deviceToken   |GUID     |constant|global   |local  |notate which device is the origin of the data|
-|isDirty       |boolean  |variable|local    |local  |true when modified/created (do not set while synchronization)|
+|isDirty       |BOOL     |variable|local    |local  |true when modified/created (do not set while synchronization)|
 |localTimestamp|Timestamp|variable|global   |local  |time when last modified (do not set while synchronization)|
-|deletedAt     |DateTime |variable|global   |local  |for soft deletion|
+|isDeleted     |BOOL     |variable|global   |local  |for soft deletion|
 
 And in global context (on local), following variables should be stored.
 
@@ -43,7 +43,7 @@ Every DeltaPack should have `id` to prevent duplicated maniplation and these `id
 ```json
 {
   "_id": "0f72fa94-d0e3-497c-8528-af25df5ff7c9" // UUID
-  "model1_name": [
+  "Book": [
     {
       "column_1": "data_1",
       "column_2": "data_2"
@@ -51,7 +51,7 @@ Every DeltaPack should have `id` to prevent duplicated maniplation and these `id
     {..},
     ..
   ],
-  "model2_name": [
+  "Author": [
     {
       "column_1": "data_1"
     },
