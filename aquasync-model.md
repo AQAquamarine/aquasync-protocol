@@ -51,3 +51,65 @@ def set_ust
   self.ust = Time.now.to_i
 end
 ```
+
+Test
+---
+
+```rb
+describe Book do
+  let(:book) { Book.new }
+
+  context "#before_save" do
+    before(:each) do
+      book.gid = "550E8400-E29B-41D4-A716-446655440000"
+      book.save
+    end
+    it("ust are set when saved") {
+      expect(book.ust).to_not eq nil
+    }
+
+    it("gid should be lowercase") {
+      expect(book.gid).to eq "550e8400-e29b-41d4-a716-446655440000"
+    }
+  end
+
+  context "validation" do
+    before(:each) do
+      book.deviceToken = "dddddddd-e29b-41d4-a716-446655dd0000"
+      book.gid = "550e8400-e29b-41d4-a716-446655440000"
+      book.localTimestamp = 1234567789
+    end
+
+    it("does not allow nil for :gid") {
+      book.gid = nil
+      expect(book.valid?).to eq false
+    }
+
+    it("does not allow nil for :deviceToken") {
+      book.deviceToken = nil
+      expect(book.valid?).to eq false
+    }
+
+    it("does not allow nil for :localTimestamp") {
+      book.localTimestamp = nil
+      expect(book.valid?).to eq false
+    }
+    it("allows lowercase UUID values for :gid") {
+      book.gid = "550e8400-e29b-41d4-a716-446655440000"
+      expect(book.valid?).to eq true
+    }
+    it("does not allow not-UUID value for :gid") {
+      book.gid = "hugahuga"
+      expect(book.valid?).to eq false
+    }
+    it("allows lowercase UUID values for :deviceToken") {
+      book.deviceToken = "550e8400-e29b-41d4-a716-446655440000"
+      expect(book.valid?).to eq true
+    }
+    it("does not allow not-UUID value for :deviceToken") {
+      book.deviceToken = "hugahuga"
+      expect(book.valid?).to eq false
+    }
+  end
+end
+```
