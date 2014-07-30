@@ -7,7 +7,7 @@ Every DeltaPack should have `id` to prevent duplicated maniplation and these `id
 ```json
 {
   "_id": "0f72fa94-d0e3-497c-8528-af25df5ff7c9" // UUID
-  "model1_name": [
+  "Book": [
     {
       "column_1": "data_1",
       "column_2": "data_2"
@@ -15,7 +15,7 @@ Every DeltaPack should have `id` to prevent duplicated maniplation and these `id
     {..},
     ..
   ],
-  "model2_name": [
+  "Author": [
     {
       "column_1": "data_1"
     },
@@ -25,3 +25,6 @@ Every DeltaPack should have `id` to prevent duplicated maniplation and these `id
   ..
 }
 ```
+
+- **CLASS NAME SHOULD BE PASCAL CASE (e.g. `Book`).**
+- Other columns are not ristricted.
