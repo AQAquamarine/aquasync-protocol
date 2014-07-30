@@ -16,3 +16,38 @@ Aquasync Model should have following columns.
 - **`deviceToken` SHOULD BE LOWERCASE.**
 
 The test written in RSpec will be provided.
+
+Validations
+---
+
+```rb
+validates_presence_of :gid
+validates_format_of :gid, with: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
+validates_presence_of :ust
+validates_presence_of :localTimestamp
+validates_presence_of :deviceToken
+validates_format_of :deviceToken, with: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
+```
+
+Callbacks
+---
+
+```rb
+before_validation do
+  downcase_gid
+  downcase_device_token
+  set_ust
+end
+
+def downcase_gid
+  self.gid.try(:downcase!)
+end
+
+def downcase_device_token
+  self.deviceToken.try(:downcase!)
+end
+
+def set_ust
+  self.ust = Time.now.to_i
+end
+```
