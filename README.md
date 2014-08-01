@@ -77,6 +77,8 @@ example: `GET /deltas/from:123456789`
 
 Should return `DeltaPack` data with appropriate `Content-Type`. (like `application/json`)
 
+It returns `204` as HTTP Status Code if there is no updated content.
+
 ####Concerns
 
 - Too big `DeltaPack`? Separete them into several DeltaPacks?
