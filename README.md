@@ -128,7 +128,8 @@ Timing
 References
 --
 
-[Evernote Synchronization via EDAM](https://dev.evernote.com/media/pdf/edam-sync.pdf)
+- [Evernote Synchronization via EDAM](https://dev.evernote.com/media/pdf/edam-sync.pdf)
+- [HTTP API Design Guide](https://github.com/interagent/http-api-design)
 
 Related links
 ---
