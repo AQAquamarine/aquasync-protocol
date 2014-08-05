@@ -134,7 +134,7 @@ References
 Related links
 ---
 
-- [Aquasync](https://github.com/AQAquamarine/Aquasync) - Official implementation for iOS
+- [Aquasync-iOS](https://github.com/AQAquamarine/aquasync-ios) - Official implementation for iOS
 
 LICENSE
 ---
